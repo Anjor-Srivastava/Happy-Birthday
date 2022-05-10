@@ -3,7 +3,12 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(700, 500);
+    if (screen.width < 425) {
+        createCanvas(400, 500);
+    }
+    else {
+        createCanvas(700, 500);
+    }
     
     capture = createCapture(VIDEO);
     capture.hide();
@@ -13,18 +18,32 @@ function setup() {
   
 function draw() {
     tint(tint_color);
-    image(capture, 0, 0, 700, 500);
-    image(img, 250, 25, 200, 100);
     fill(150, 75, 0);
     stroke(150, 75, 0);
-    circle(0, 0, 150);
-    circle(700, 0, 150);
-    circle(0, 500, 150);
-    circle(700, 500, 150);
-    rect(0, 0, 30, 700);
-    rect(671, 0, 30, 700);
-    rect(0, 0, 700, 30);
-    rect(0, 471, 700, 30);
+    if(screen.width < 425) {
+        image(capture, 0, 0, 400, 500);
+        image(img, 100, 25, 200, 100);
+        circle(0, 0, 150);
+        circle(400, 0, 150);
+        circle(0, 500, 150);
+        circle(400, 500, 150);
+        rect(0, 0, 30, 700);
+        rect(375, 0, 30, 700);
+        rect(0, 0, 700, 30);
+        rect(0, 471, 700, 30);
+    }
+    else {
+        image(capture, 0, 0, 700, 500);
+        image(img, 250, 25, 200, 100);
+        circle(0, 0, 150);
+        circle(700, 0, 150);
+        circle(0, 500, 150);
+        circle(700, 500, 150);
+        rect(0, 0, 30, 700);
+        rect(671, 0, 30, 700);
+        rect(0, 0, 700, 30);
+        rect(0, 471, 700, 30);
+    }
 }
   
 function snap() {
